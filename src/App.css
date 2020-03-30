@@ -36,3 +36,72 @@
     transform: rotate(360deg);
   }
 }
+
+.pulsing {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.color {
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+}
+
+.color.clickable:hover {
+  scale: 1.05;
+}
+
+.unClickable {
+  pointer-events: none;
+}
+
+.colorDiv {
+  max-width: 530px;
+  min-height: 260px;
+  padding-top: 10px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.colorPicker {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.playersColorSelect {
+  min-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+}
