@@ -4,10 +4,10 @@ import ColorPicker from "./components/ColorPicker";
 import Game from "./components/Game";
 
 function App() {
-  const [player1Color, setPlayer1Color] = useState("");
-  const [player2Color, setPlayer2Color] = useState("");
-  const [showColorPicker, setShowColorPicker] = useState(true);
-  const [showGame, setShowGame] = useState(false);
+  const [player1Color, setPlayer1Color] = useState("red"); //tijdelijk, normaal ""
+  const [player2Color, setPlayer2Color] = useState("blue"); //tijdelijk, normaal ""
+  const [showColorPicker, setShowColorPicker] = useState(false); //tijdelijk, normaal true
+  const [showGame, setShowGame] = useState(true); //tijdelijk, normaal false
 
   return (
     <div className="App">
@@ -18,9 +18,12 @@ function App() {
           player2Color={player2Color}
           setPlayer2Color={setPlayer2Color}
           setShowGame={setShowGame}
+          setShowColorPicker={setShowColorPicker}
         />
       )}
-      {showGame === true && <Game />}
+      {showGame === true && (
+        <Game player1Color={player1Color} player2Color={player2Color} />
+      )}
     </div>
   );
 }

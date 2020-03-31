@@ -29,6 +29,13 @@ export default function ColorPicker(props) {
     }
   }
 
+  function handleStartButtonClick() {
+    props.setShowColorPicker(false);
+    props.setShowGame(true);
+    setSelectedPlayer("Player 1");
+    setHideStartButton(true);
+  }
+
   function checkIfAllreadyClicked(color) {
     if (props.player2Color !== "") {
       return "unClickable";
@@ -49,7 +56,9 @@ export default function ColorPicker(props) {
           Player 1
         </h1>
         <p hidden={!hideStartButton}>{selectedPlayer} select a color!</p>
-        <button hidden={hideStartButton}>Start</button>
+        <button hidden={hideStartButton} onClick={handleStartButtonClick}>
+          Start
+        </button>
         <h1
           style={{ color: props.player2Color }}
           className={selectedPlayer === "Player 2" ? "pulsing" : ""}
