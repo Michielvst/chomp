@@ -37,6 +37,11 @@
   }
 }
 
+:root {
+  --color1: white;
+  --color2: white;
+}
+
 .pulsing {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
   transform: scale(1);
@@ -104,6 +109,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -120,4 +126,30 @@
 
 .tile {
   border: 1px solid black;
+}
+
+.playersGame {
+  min-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.player1 {
+  background-color: var(--color1);
+}
+
+.player2 {
+  background-color: var(--color2);
+}
+
+.xTile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poisonTile {
+  width: 90%;
+  height: 90%;
 }

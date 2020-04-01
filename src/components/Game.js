@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import poison from "../poison.png";
 
 const tiles = [
   [4, 3],
@@ -86,30 +87,52 @@ export default function Game(props) {
     );
   }
 
-  function color(value) {
+  function checkPlayer(value) {
     if (tilesPlayer1.some(el => JSON.stringify(value) === JSON.stringify(el))) {
-      return props.player1Color;
+      return "player1";
     } else if (
       tilesPlayer2.some(el => JSON.stringify(value) === JSON.stringify(el))
     ) {
-      return props.player2Color;
+      return "player2";
     }
   }
 
   return (
     <div className="game">
+      <header className="playersGame">
+        <h1
+          style={{ color: props.player1Color }}
+          className={playerTurn === "Player 1" ? "pulsing" : ""}
+        >
+          Player 1
+        </h1>
+        <p>{playerTurn}, your turn!</p>
+        <h1
+          style={{ color: props.player2Color }}
+          className={playerTurn === "Player 2" ? "pulsing" : ""}
+        >
+          Player 2
+        </h1>
+      </header>
       <div className="gameBoard">
+        <div
+          className={`tile ${checkPlayer([4, 3])} xTile`}
+          value={[4, 3]}
+          onClick={handleTileClick}
+          name={[4, 3]}
+        >
+          <img src={poison} className="poisonTile" />
+        </div>
         {tiles.map(tile => {
-          return (
+          return JSON.stringify(tile) === JSON.stringify([4, 3]) ? (
+            ""
+          ) : (
             <div
-              className="tile"
+              className={`tile ${checkPlayer(tile)}`}
               value={tile}
               onClick={handleTileClick}
               name={tile}
-              style={{ backgroundColor: color(tile) }}
-            >
-              {tile}
-            </div>
+            ></div>
           );
         })}
       </div>

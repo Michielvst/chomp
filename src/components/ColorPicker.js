@@ -21,9 +21,17 @@ export default function ColorPicker(props) {
     }
     if (selectedPlayer === "Player 1") {
       props.setPlayer1Color(e.currentTarget.id);
+      document.documentElement.style.setProperty(
+        "--color1",
+        e.currentTarget.id
+      );
       setSelectedPlayer("Player 2");
     } else {
       props.setPlayer2Color(e.currentTarget.id);
+      document.documentElement.style.setProperty(
+        "--color2",
+        e.currentTarget.id
+      );
       setHideStartButton(false);
       setSelectedPlayer("");
     }
@@ -75,9 +83,7 @@ export default function ColorPicker(props) {
               style={{ backgroundColor: color }}
               key={color}
               id={color}
-            >
-              test
-            </div>
+            ></div>
           );
         })}
       </div>
