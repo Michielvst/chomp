@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #222831;
+  color: #eeeeee;
+  font-family: sans-serif, serif;
 }
 
 .App-logo {
@@ -125,7 +128,7 @@
 }
 
 .tile {
-  border: 1px solid black;
+  border: 1px solid #eeeeee;
 }
 
 .playersGame {
@@ -152,4 +155,22 @@
 .poisonTile {
   width: 90%;
   height: 90%;
+}
+
+.winScreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(20px + 4vmin);
+  color: #eeeeee;
+  font-family: sans-serif;
+}
+
+button {
+  font-size: calc(10px + 2vmin);
+  color: #eeeeee;
+  background-color: #222831;
 }

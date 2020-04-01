@@ -16,15 +16,19 @@ const tiles = [
   [1, 1]
 ];
 
+const wait = (amount = 0) =>
+  new Promise(resolve => setTimeout(resolve, amount));
+
 export default function Game(props) {
-  const [playerTurn, setPlayerTurn] = useState("Player 1");
   const [tilesPlayer1, setTilesPlayer1] = useState([]);
   const [tilesPlayer2, setTilesPlayer2] = useState([]);
+  const [showText, setShowText] = useState(true);
+  const [showWinner, setShowWinner] = useState(false);
 
   function togglePlayer() {
-    playerTurn === "Player 1"
-      ? setPlayerTurn("Player 2")
-      : setPlayerTurn("Player 1");
+    props.playerTurn === "Player 1"
+      ? props.setPlayerTurn("Player 2")
+      : props.setPlayerTurn("Player 1");
   }
 
   function tileToArray(tile) {
@@ -37,7 +41,7 @@ export default function Game(props) {
   function handleTileClick(e) {
     const valueArr = tileToArray(e.currentTarget);
     console.log(tilesPlayer1.includes([...valueArr]));
-    if (playerTurn === "Player 1") {
+    if (props.playerTurn === "Player 1") {
       if (checkIfTaken(valueArr)) {
         return;
       } else {
@@ -97,19 +101,33 @@ export default function Game(props) {
     }
   }
 
+  async function handleXTileClick(e) {
+    handleTileClick(e);
+    setShowText(false);
+    setShowWinner(true);
+    await wait(800);
+    props.setShowGame(false);
+    props.setShowWinScreen(true);
+    setTilesPlayer1([]);
+    setTilesPlayer2([]);
+    setShowWinner(false);
+    setShowText(true);
+  }
+
   return (
     <div className="game">
       <header className="playersGame">
         <h1
           style={{ color: props.player1Color }}
-          className={playerTurn === "Player 1" ? "pulsing" : ""}
+          className={props.playerTurn === "Player 1" ? "pulsing" : ""}
         >
           Player 1
         </h1>
-        <p>{playerTurn}, your turn!</p>
+        {showText === true && <p>{props.playerTurn}, your turn!</p>}
+        {showWinner === true && <p>{props.playerTurn} wins the game!</p>}
         <h1
           style={{ color: props.player2Color }}
-          className={playerTurn === "Player 2" ? "pulsing" : ""}
+          className={props.playerTurn === "Player 2" ? "pulsing" : ""}
         >
           Player 2
         </h1>
@@ -118,7 +136,7 @@ export default function Game(props) {
         <div
           className={`tile ${checkPlayer([4, 3])} xTile`}
           value={[4, 3]}
-          onClick={handleTileClick}
+          onClick={handleXTileClick}
           name={[4, 3]}
         >
           <img src={poison} className="poisonTile" />
