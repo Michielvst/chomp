@@ -206,3 +206,7 @@ button {
 .modal-content h2 {
   text-align: center;
 }
+
+.colorPicker h3 {
+  font-size: 60px;
+}
