@@ -41,7 +41,6 @@ export default function Game(props) {
 
   function handleTileClick(e) {
     const valueArr = tileToArray(e.currentTarget);
-    console.log(tilesPlayer1.includes([...valueArr]));
     if (props.playerTurn === "Player 1") {
       if (checkIfTaken(valueArr)) {
         return;
@@ -107,12 +106,12 @@ export default function Game(props) {
     setShowText(false);
     setShowWinner(true);
     await wait(800);
-    props.setShowGame(false);
-    props.setShowWinScreen(true);
     setTilesPlayer1([]);
     setTilesPlayer2([]);
     setShowWinner(false);
     setShowText(true);
+    props.setShowGame(false);
+    props.setShowWinScreen(true);
   }
 
   function handlePlay() {
@@ -179,6 +178,7 @@ export default function Game(props) {
               value={tile}
               onClick={handleTileClick}
               name={tile}
+              key={Math.random()}
             ></div>
           );
         })}
