@@ -24,6 +24,7 @@ export default function Game(props) {
   const [tilesPlayer2, setTilesPlayer2] = useState([]);
   const [showText, setShowText] = useState(true);
   const [showWinner, setShowWinner] = useState(false);
+  const [showRulesModal, setShowRulesModal] = useState(true);
 
   function togglePlayer() {
     props.playerTurn === "Player 1"
@@ -116,6 +117,7 @@ export default function Game(props) {
 
   return (
     <div className="game">
+      {showRulesModal}
       <header className="playersGame">
         <h1
           style={{ color: props.player1Color }}
@@ -154,6 +156,7 @@ export default function Game(props) {
           );
         })}
       </div>
+      <button>Rules</button>
     </div>
   );
 }

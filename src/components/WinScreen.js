@@ -13,9 +13,9 @@ export default function WinScreen(props) {
         <span
           style={{
             color:
-              props.playerTurn === "Player1"
-                ? props.player1Color
-                : props.player2Color
+              props.playerTurn === "Player 1"
+                ? props.player2Color
+                : props.player1Color
           }}
         >
           {props.playerTurn === "Player 1" ? "Player 2" : "Player 1"}{" "}
@@ -27,7 +27,7 @@ export default function WinScreen(props) {
         <span
           style={{
             color:
-              props.playerTurn !== "Player1"
+              props.playerTurn === "Player1"
                 ? props.player1Color
                 : props.player2Color
           }}

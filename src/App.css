@@ -173,4 +173,5 @@ button {
   font-size: calc(10px + 2vmin);
   color: #eeeeee;
   background-color: #222831;
+  margin: 10px;
 }
