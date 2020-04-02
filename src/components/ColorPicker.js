@@ -56,7 +56,7 @@ export default function ColorPicker(props) {
 
   return (
     <div className="colorPicker">
-      <h3>Chomp</h3>
+      <h3>Chomp!</h3>
       <header className="playersColorSelect">
         <h1
           style={{ color: props.player1Color }}
