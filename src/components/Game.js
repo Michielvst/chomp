@@ -115,9 +115,36 @@ export default function Game(props) {
     setShowText(true);
   }
 
+  function handlePlay() {
+    setShowRulesModal(false);
+  }
+
+  function rulesClick() {
+    setShowRulesModal(true);
+  }
+
   return (
     <div className="game">
-      {showRulesModal}
+      {showRulesModal === true && (
+        <div className="rulesModal">
+          <div className="modal-content">
+            <h2>Rules</h2>
+            <p>
+              The players take turns in chomping squares out of a bar of
+              chocolate. The player who eats the last square loses.
+            </p>
+            <p>
+              Players take turns in taking a rectangular bite out of the bottom
+              right corner of the bar, by shading a square, together with all
+              the squares below and/or to the right of it. The top left-hand
+              square is poisoned, and the player forced to eat this loses.{" "}
+              <br />
+              Good luck!
+            </p>
+            <button onClick={handlePlay}>Play</button>
+          </div>
+        </div>
+      )}
       <header className="playersGame">
         <h1
           style={{ color: props.player1Color }}
@@ -156,7 +183,7 @@ export default function Game(props) {
           );
         })}
       </div>
-      <button>Rules</button>
+      <button onClick={rulesClick}>Rules</button>
     </div>
   );
 }
